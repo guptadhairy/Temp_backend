@@ -28,9 +28,9 @@ app.use(userRouter);
 app.use(contactRouter);
 app.use(newsRouter);
 app.use(paymentRouter);
-mongoose.connect("mongodb://127.0.0.1:27017",{
+mongoose.connect(process.env.MONGO_URI,{
     dbName:"temple",
-}).then(()=> console.log("Database is connected")).catch((e)=>console.log(e));
+}).then((c)=> console.log(`Database is connected  with ${c.connection.host}`)).catch((e)=>console.log(e));
 
 
 app.get("/",(req,res)=>{
